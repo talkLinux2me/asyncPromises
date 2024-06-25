@@ -17,3 +17,41 @@ export async function central(id) {
 
   return db;
 }
+/**
+ * Accepts a user id value and returns an object containing
+ * username, website, and company data.
+ * @param {Number} id The user id.
+ * @return {Object} The user's username, website, and company data.
+ */
+export async function db1(id) {
+    if (typeof id !== "number") throw new Error("Invalid Input -- Not a Number");
+    if (id < 1 || id > 4) throw new Error("Invalid Input -- Out of Range");
+  
+    const data = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    const json = await data.json();
+  
+    return {
+      username: json.username,
+      website: json.website,
+      company: json.company,
+    };
+  }
+  /**
+   * Accepts a user id value and returns an object containing
+   * username, website, and company data.
+   * @param {Number} id The user id.
+   * @return {Object} The user's username, website, and company data.
+   */
+  export async function db2(id) {
+    if (typeof id !== "number") throw new Error("Invalid Input -- Not a Number");
+    if (id < 5 || id > 7) throw new Error("Invalid Input -- Out of Range");
+  
+    const data = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    const json = await data.json();
+  
+    return {
+      username: json.username,
+      website: json.website,
+      company: json.company,
+    };
+  }

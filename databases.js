@@ -55,3 +55,43 @@ export async function db1(id) {
       company: json.company,
     };
   }
+  /**
+ * Accepts a user id value and returns an object containing
+ * username, website, and company data.
+ * @param {Number} id The user id.
+ * @return {Object} The user's username, website, and company data.
+ */
+export async function db3(id) {
+    if (typeof id !== "number") throw new Error("Invalid Input -- Not a Number");
+    if (id < 8 || id > 10) throw new Error("Invalid Input -- Out of Range");
+  
+    const data = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    const json = await data.json();
+  
+    return {
+      username: json.username,
+      website: json.website,
+      company: json.company,
+    };
+  }
+  
+  /**
+   * Accepts a user id value and returns an object containing
+   * name, email, address, and phone data.
+   * @param {Number} id The user id.
+   * @return {Object} The user's name, email, address, and phone data.
+   */
+  export async function vault(id) {
+    if (typeof id !== "number") throw new Error("Invalid Input -- Not a Number");
+    if (id < 1 || id > 10) throw new Error("Invalid Input -- Out of Range");
+  
+    const data = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    const json = await data.json();
+  
+    return {
+      name: json.name,
+      email: json.email,
+      address: json.address,
+      phone: json.phone,
+    };
+  }
